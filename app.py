@@ -26,39 +26,39 @@ def get_db():
        port = int(os.getenv("MYSQLPORT", 3306))
     )
 
-def init_db():
-    conn = get_db()
-    cur = conn.cursor()
+# def init_db():
+#     conn = get_db()
+#     cur = conn.cursor()
 
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        fullname VARCHAR(100),
-        email VARCHAR(100) UNIQUE,
-        mobile VARCHAR(20),
-        password VARCHAR(100)
-    )
-    """)
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS users(
+#         id INT AUTO_INCREMENT PRIMARY KEY,
+#         fullname VARCHAR(100),
+#         email VARCHAR(100) UNIQUE,
+#         mobile VARCHAR(20),
+#         password VARCHAR(100)
+#     )
+#     """)
 
-    cur.execute("""
-   CREATE TABLE IF NOT EXISTS feedback(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100),
-    rollno VARCHAR(50),
-    department VARCHAR(100),
-    semester VARCHAR(20),
-    teacher VARCHAR(100),
-    subject VARCHAR(100),
-    rating VARCHAR(20),
-    comments TEXT
-)
-    """)
+#     cur.execute("""
+#    CREATE TABLE IF NOT EXISTS feedback(
+#     id INT AUTO_INCREMENT PRIMARY KEY,
+#     name VARCHAR(100),
+#     email VARCHAR(100),
+#     rollno VARCHAR(50),
+#     department VARCHAR(100),
+#     semester VARCHAR(20),
+#     teacher VARCHAR(100),
+#     subject VARCHAR(100),
+#     rating VARCHAR(20),
+#     comments TEXT
+# )
+#     """)
 
-    conn.commit()
-    conn.close()
+#     conn.commit()
+#     conn.close()
 
-init_db()
+# init_db()
 
 
 # ---------- LOGIN PAGE ----------
