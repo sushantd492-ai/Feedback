@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Student Feedback System</title>
+
+  <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+}
+
+.signup-container{
+
+    width:450px;
+    max-width:90%;
+
+    padding:40px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.45);
+
+}
+
+.signup-container h2{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#ddd;
+
+    margin-bottom:30px;
+
+    font-size:15px;
+
+}
+
+.input-box{
+
+    margin-bottom:18px;
+
+}
+
+.input-box label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.20);
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.input-box input::placeholder{
+
+    color:#e8e8e8;
+
+}
+
+.input-box input:focus{
+
+    background:rgba(255,255,255,.30);
+
+    border:1px solid #00c6ff;
+
+}
+
+.signup-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:linear-gradient(45deg,#0066ff,#00c6ff);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.signup-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.4);
+
+}
+
+.login-link{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.login-link a{
+
+    color:#8fdcff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+.error{
+
+    color:#ffb3b3;
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+</style>
+</head>
+
+<body>
+<div class="signup-container">
+
+<h2>Create Account</h2>
+
+<p class="subtitle">
+Student Feedback System
+</p>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<form id="signupForm" action="/register" method="POST">
+
+        <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        </div>
+
+        <div class="input-box">
+            <label>Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+        </div>
+
+        <div class="input-box">
+            <label>Password</label>
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+        </div>
+
+        <div class="input-box">
+            <label>Confirm Password</label>
+           <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="signup-btn">Sign Up</button>
+
+    </form>
+
+<div class="login-link">
+    Already have an account?
+   <a href="/">Login</a>
+</div>
+
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(event){
+
+    let fullname = document.getElementById("fullname").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(fullname === ""){
+        alert("Please enter your full name.");
+        event.preventDefault();
+        return;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)){
+        alert("Please enter a valid email.");
+        event.preventDefault();
+        return;
+    }
+
+    let mobilePattern = /^[0-9]{10}$/;
+    if(!mobilePattern.test(mobile)){
+        alert("Enter a valid 10-digit mobile number.");
+        event.preventDefault();
+        return;
+    }
+
+    if(password.length < 6){
+        alert("Password must be at least 6 characters.");
+        event.preventDefault();
+        return;
+    }
+
+    if(password !== confirmPassword){
+        alert("Passwords do not match.");
+        event.preventDefault();
+        return;
+    }
+
+    alert("Signup Successful!");
+});
+</script>
+</body>

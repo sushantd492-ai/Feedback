@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>AI Assistant</title>
+
+<style>
+
+header{
+    position:relative;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+    color:#ddd;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    animation:bgzoom 15s infinite alternate;
+
+}
+
+@keyframes bgzoom{
+
+0%{
+background-size:100%;
+}
+
+100%{
+background-size:110%;
+}
+
+}
+
+/* Navbar */
+
+nav{
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+padding:18px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+padding:12px 22px;
+
+border-radius:8px;
+
+transition:.4s;
+
+font-weight:bold;
+
+}
+
+nav a:hover{
+
+background:#00bfff;
+
+transform:translateY(-3px);
+
+}
+
+/* Hero */
+
+.hero{
+
+text-align:center;
+
+padding:50px 20px;
+
+color:white;
+
+animation:fadeDown 1s;
+
+}
+
+.hero h1{
+
+font-size:55px;
+
+margin-bottom:15px;
+
+text-shadow:0 0 20px cyan;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+color:#ddd;
+
+}
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+
+transform:translateY(-50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Chat Container */
+
+.container{
+
+width:850px;
+
+max-width:95%;
+
+margin:30px auto;
+
+padding:30px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+box-shadow:0 15px 35px rgba(0,0,0,.5);
+
+animation:floatBox 5s ease-in-out infinite;
+
+}
+
+@keyframes floatBox{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+.container h2{
+
+text-align:center;
+
+color:white;
+
+font-size:34px;
+
+margin-bottom:25px;
+
+}
+
+/* Chat Box */
+
+#chatbox{
+
+height:420px;
+
+overflow-y:auto;
+
+padding:20px;
+
+border-radius:15px;
+
+background:rgba(255,255,255,.15);
+
+border:1px solid rgba(255,255,255,.2);
+
+color:white;
+
+scroll-behavior:smooth;
+
+}
+
+#chatbox p{
+
+padding:12px;
+
+margin:12px 0;
+
+border-radius:10px;
+
+animation:message .4s;
+
+}
+
+#chatbox p:nth-child(odd){
+
+background:rgba(0,191,255,.2);
+
+}
+
+#chatbox p:nth-child(even){
+
+background:rgba(255,255,255,.15);
+
+}
+
+@keyframes message{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Input */
+
+.input-area{
+
+display:flex;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.input-area input{
+
+flex:1;
+
+padding:16px;
+
+border:none;
+
+outline:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+background:rgba(255,255,255,.18);
+
+color:white;
+
+}
+
+.input-area input::placeholder{
+
+color:#ddd;
+
+}
+
+.input-area button{
+
+padding:16px 35px;
+
+border:none;
+
+border-radius:12px;
+
+background:linear-gradient(45deg,#007BFF,#00d4ff);
+
+color:white;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.input-area button:hover{
+
+transform:scale(1.08);
+
+box-shadow:0 0 25px cyan;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Student Feedback System</h1>
+    <p>Improve Education Through Student Feedback</p>
+</header>
+
+<nav>
+
+<a href="/home">Home</a>
+<a href="/report">report</a> 
+<a href="/feedback">Feedback</a>
+<a href="/about">About</a>
+<a href="/ai">AI Assistant</a>
+<a href="/logout">Logout</a>
+
+</nav>
+
+<div class="container">
+
+<h2>AI Assistant</h2>
+
+<div id="chatbox"></div>
+
+<input
+type="text"
+id="message"
+placeholder="Ask anything...">
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+</div>
+
+<script>
+
+async function sendMessage(){
+
+let message=document.getElementById("message").value;
+
+if(message=="") return;
+
+document.getElementById("chatbox").innerHTML +=
+"<p><b>You:</b> "+message+"</p>";
+
+let response=await fetch("/chat",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+message:message
+})
+
+});
+
+let data=await response.json();
+
+document.getElementById("chatbox").innerHTML +=
+"<p><b>AI:</b> "+data.reply+"</p>";
+
+document.getElementById("message").value="";
+
+}
+
+</script>
+
+</body>
+</html>  

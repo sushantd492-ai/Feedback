@@ -1,0 +1,133 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Submitted</title>
+    <style>
+       *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
+    url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+}
+
+.success-box{
+
+    width:450px;
+    max-width:90%;
+
+    text-align:center;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+
+    color:white;
+
+}
+
+.success-icon{
+
+    font-size:80px;
+
+    color:#00ff88;
+
+    margin-bottom:15px;
+
+}
+
+h1{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+    color:white;
+
+}
+
+p{
+
+    color:#f2f2f2;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+    margin-bottom:10px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:15px 35px;
+
+    text-decoration:none;
+
+    color:white;
+
+    border-radius:10px;
+
+    background:linear-gradient(45deg,#0066ff,#00c6ff);
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.4);
+
+}
+    </style>
+</head>
+<body>
+
+    <div class="success-box">
+        <div class="success-icon">✔</div>
+        <h1>Feedback Submitted Successfully!</h1>
+        <p>Thank you for your valuable feedback.</p>
+        <p>We appreciate your time and suggestions.</p>
+
+        <a href="/home" class="btn">🏠 Back to Home</a>
+    </div>
+
+</body>
+</html>

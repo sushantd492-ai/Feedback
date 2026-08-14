@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Student Feedback System</title>
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+            linear-gradient(
+                rgba(0,0,0,.65),
+                rgba(0,0,0,.65)
+            ),
+            url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1920&q=80");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            color: white;
+
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .dashboard-container {
+
+            width: 94%;
+            max-width: 1450px;
+
+            margin: 40px auto;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .dashboard-header {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .dashboard-header h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,.6);
+
+        }
+
+
+        .dashboard-header p {
+
+            color: #dbeafe;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =========================================
+           STAT CARDS
+        ========================================= */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .stat-card {
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,123,255,.85),
+                    rgba(0,198,255,.75)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.4);
+
+            transition: .3s;
+
+        }
+
+
+        .stat-card:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 25px 45px
+                rgba(0,0,0,.55);
+
+        }
+
+
+        .stat-icon {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .stat-card h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .stat-number {
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           INFORMATION CARDS
+        ========================================= */
+
+        .info-section {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .info-card {
+
+            padding: 25px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.12);
+
+            backdrop-filter: blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,.35);
+
+        }
+
+
+        .info-card h2 {
+
+            margin-bottom: 12px;
+
+            font-size: 22px;
+
+        }
+
+
+        .info-card p {
+
+            color: #ddd;
+
+            line-height: 1.6;
+
+        }
+
+
+        .highlight {
+
+            color: #00c6ff;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           SEARCH SECTION
+        ========================================= */
+
+        .search-section {
+
+            margin-bottom: 20px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            backdrop-filter: blur(15px);
+
+            padding: 18px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+        }
+
+
+        .search-box {
+
+            width: 100%;
+
+            padding: 15px 20px;
+
+            border: none;
+
+            outline: none;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            background:
+                rgba(255,255,255,.92);
+
+            color: #222;
+
+            transition: .3s;
+
+        }
+
+
+        .search-box:focus {
+
+            box-shadow:
+                0 0 0 3px
+                rgba(0,198,255,.35);
+
+        }
+
+
+        /* =========================================
+           TABLE CONTAINER
+        ========================================= */
+
+        .table-card {
+
+            background:
+                rgba(255,255,255,.10);
+
+            backdrop-filter: blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            border-radius: 20px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.4);
+
+            overflow: hidden;
+
+        }
+
+
+        .table-title {
+
+            padding: 22px 25px;
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            background:
+                rgba(0,0,0,.20);
+
+        }
+
+
+        .table-container {
+
+            width: 100%;
+
+            overflow-x: auto;
+
+        }
+
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 1050px;
+
+        }
+
+
+        /* =========================================
+           TABLE HEADER
+        ========================================= */
+
+        thead {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #007bff,
+                    #00aaff
+                );
+
+        }
+
+
+        th {
+
+            padding: 16px 12px;
+
+            font-size: 15px;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =========================================
+           TABLE BODY
+        ========================================= */
+
+        td {
+
+            padding: 14px 12px;
+
+            text-align: center;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,.15);
+
+            color: white;
+
+        }
+
+
+        tbody tr {
+
+            transition: .25s;
+
+        }
+
+
+        tbody tr:hover {
+
+            background:
+                rgba(255,255,255,.12);
+
+        }
+
+
+        /* =========================================
+           RATING
+        ========================================= */
+
+        .rating {
+
+            display: inline-block;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,193,7,.18);
+
+            color: #ffd54a;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           ACTION BUTTONS
+        ========================================= */
+
+        .action-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .edit-btn {
+
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f59e0b,
+                    #f97316
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+            transition: .3s;
+
+            box-shadow:
+                0 5px 12px
+                rgba(249,115,22,.25);
+
+        }
+
+
+        .edit-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 20px
+                rgba(249,115,22,.45);
+
+        }
+
+
+        .delete-btn {
+
+            display: inline-block;
+
+            padding: 8px 14px;
+
+            border-radius: 9px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ef4444,
+                    #dc2626
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 13px;
+
+            transition: .3s;
+
+            box-shadow:
+                0 5px 12px
+                rgba(220,38,38,.25);
+
+        }
+
+
+        .delete-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 10px 20px
+                rgba(220,38,38,.50);
+
+        }
+
+
+        /* =========================================
+           NO DATA
+        ========================================= */
+
+        .no-data {
+
+            text-align: center;
+
+            padding: 40px;
+
+            color: #ddd;
+
+            font-size: 18px;
+
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .dashboard-footer {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            color: #bbb;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media(max-width: 900px) {
+
+            .stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .info-section {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .dashboard-header h1 {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+
+        @media(max-width: 600px) {
+
+            .dashboard-container {
+
+                width: 95%;
+
+                margin: 25px auto;
+
+            }
+
+
+            .dashboard-header h1 {
+
+                font-size: 27px;
+
+            }
+
+
+            .dashboard-header p {
+
+                font-size: 14px;
+
+            }
+
+
+            .stat-card {
+
+                padding: 25px 15px;
+
+            }
+
+
+            .stat-number {
+
+                font-size: 35px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-container">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="dashboard-header">
+
+        <h1>📊 Admin Dashboard</h1>
+
+        <p>
+            Student Feedback System
+            — Manage and analyze student feedback
+        </p>
+
+    </div>
+
+
+    <!-- =====================================
+         STATISTICS
+    ====================================== -->
+
+    <div class="stats">
+
+
+        <!-- TOTAL FEEDBACK -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📝
+            </div>
+
+            <h3>
+                Total Feedback
+            </h3>
+
+            <div class="stat-number">
+
+                {{ total_feedback }}
+
+            </div>
+
+        </div>
+
+
+        <!-- TOTAL STUDENTS -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👨‍🎓
+            </div>
+
+            <h3>
+                Total Students
+            </h3>
+
+            <div class="stat-number">
+
+                {{ total_students }}
+
+            </div>
+
+        </div>
+
+
+        <!-- AVERAGE RATING -->
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Average Rating
+            </h3>
+
+            <div class="stat-number">
+
+                {{ average_rating }}
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================
+         INFORMATION
+    ====================================== -->
+
+    <div class="info-section">
+
+
+        <div class="info-card">
+
+            <h2>
+                📈 Feedback Overview
+            </h2>
+
+            <p>
+                Total feedback received:
+                <span class="highlight">
+                    {{ total_feedback }}
+                </span>
+            </p>
+
+            <p>
+                Registered students:
+                <span class="highlight">
+                    {{ total_students }}
+                </span>
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <h2>
+                ⭐ Rating Summary
+            </h2>
+
+            <p>
+                Current average rating:
+                <span class="highlight">
+                    {{ average_rating }}
+                </span>
+            </p>
+
+            <p>
+                Use the table below to review,
+                edit or delete feedback.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================
+         SEARCH
+    ====================================== -->
+
+    <div class="search-section">
+
+        <input
+            type="text"
+            id="feedbackSearch"
+            class="search-box"
+            placeholder="🔍 Search student, roll number, department, teacher, subject..."
+            onkeyup="searchFeedback()">
+
+    </div>
+
+
+    <!-- =====================================
+         FEEDBACK TABLE
+    ====================================== -->
+
+    <div class="table-card">
+
+
+        <div class="table-title">
+
+            📋 Student Feedback
+
+        </div>
+
+
+        <div class="table-container">
+
+
+            <table id="feedbackTable">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>Roll No</th>
+
+                        <th>Department</th>
+
+                        <th>Semester</th>
+
+                        <th>Teacher</th>
+
+                        <th>Subject</th>
+
+                        <th>Rating</th>
+
+                        <th>Comments</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for feedback in feedbacks %}
+
+                    <tr>
+
+
+                        <td>
+                            {{ feedback["id"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["name"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["rollno"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["department"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["semester"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["teacher"] }}
+                        </td>
+
+
+                        <td>
+                            {{ feedback["subject"] }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="rating">
+
+                                ⭐ {{ feedback["rating"] }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ feedback["comments"] }}
+                        </td>
+
+
+                        <td>
+
+
+                            <div class="action-buttons">
+
+
+                                <!-- EDIT -->
+
+                                <a
+                                    href="/edit/{{ feedback['id'] }}"
+                                    class="edit-btn">
+
+                                    ✏️ Edit
+
+                                </a>
+
+
+                                <!-- DELETE -->
+
+                                <a
+                                    href="/delete/{{ feedback['id'] }}"
+                                    class="delete-btn"
+                                    onclick="return confirmDelete();">
+
+                                    🗑️ Delete
+
+                                </a>
+
+
+                            </div>
+
+
+                        </td>
+
+
+                    </tr>
+
+                    {% else %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="10"
+                            class="no-data">
+
+                            📭 No feedback available yet.
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <div class="dashboard-footer">
+
+        Student Feedback System
+        © 2026
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+
+
+/* =========================================
+   SEARCH FEEDBACK
+========================================= */
+
+function searchFeedback() {
+
+
+    let input =
+        document
+        .getElementById("feedbackSearch")
+        .value
+        .toLowerCase();
+
+
+    let rows =
+        document.querySelectorAll(
+            "#feedbackTable tbody tr"
+        );
+
+
+    rows.forEach(function(row) {
+
+
+        let text =
+            row.innerText.toLowerCase();
+
+
+        if(text.includes(input)) {
+
+            row.style.display = "";
+
+        }
+
+        else {
+
+            row.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================
+   DELETE CONFIRMATION
+========================================= */
+
+function confirmDelete() {
+
+
+    return confirm(
+        "⚠️ Are you sure you want to delete this feedback?"
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

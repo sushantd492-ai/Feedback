@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Feedback System</title>
+ 
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+    url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1920&q=80");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* Header */
+
+header{
+    position: relative;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+
+.profile-icon img:hover{
+    transform:scale(1.1);
+}
+
+header h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+    color:#ddd;
+}
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    padding:15px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(10px);
+}
+
+.profile-icon{
+    margin-left:auto;
+}
+
+.profile-icon a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 !important;
+    margin:0 !important;
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+.profile-icon img{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid white;
+    display:block;
+    transition:.3s;
+}
+
+.profile-icon img:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 15px rgba(255,255,255,.7);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:8px;
+}
+
+.profile-icon a{
+    padding:0 !important;
+    margin:0 !important;
+    border-radius:50%;
+    background:none !important;
+}
+
+nav a:hover{
+    background:#007bff;
+}
+
+/* Hero */
+
+.hero{
+
+    width:90%;
+    max-width:900px;
+    margin:60px auto;
+    padding:50px;
+    text-align:center;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.hero h2{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.hero p{
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    color:#f2f2f2;
+
+}
+
+/* Button */
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    background:linear-gradient(45deg,#0066ff,#00c6ff);
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 20px rgba(0,0,0,.4);
+
+}
+
+/* Features */
+
+.features{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:40px auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.card{
+
+    flex:1;
+
+    min-width:280px;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.card h3{
+
+    font-size:25px;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    color:#eee;
+
+    line-height:1.7;
+
+}
+
+/* Footer */
+
+footer{
+
+    margin-top:60px;
+
+    padding:20px;
+
+    text-align:center;
+
+    color:white;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(10px);
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+nav{
+
+    flex-wrap:wrap;
+
+}
+
+header h1{
+
+    font-size:30px;
+
+}
+
+.hero{
+
+    padding:30px;
+
+}
+
+.hero h2{
+
+    font-size:32px;
+
+}
+
+.hero p{
+
+    font-size:17px;
+
+}
+
+.btn{
+
+    width:100%;
+
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    
+
+    <h1>Student Feedback System</h1>
+    <p>Improve Education Through Student Feedback</p>
+</header>
+
+
+<nav>
+    
+    <a href="/home" class="active">Home</a>
+    <a href="/report"> Report</a>
+    <a href="/feedback">Feedback</a>
+    <a href="/about">About</a>
+    <a href="/ai">AI Assistant</a>
+    <a href="/logout">Logout</a>
+
+   <div class="profile-icon">
+    <a href="/studentprofile">
+        <img src="{{ url_for('static', filename='images/default.png') }}"
+             alt="Profile">
+    </a>
+</div>
+
+</nav>
+
+
+<section class="hero">
+    <h2>Welcome!</h2>
+    <p>
+        Welcome to the Student Feedback System. This platform allows students
+        to provide valuable feedback on courses, teachers, and college
+        facilities. Your feedback helps improve the quality of education.
+    </p>
+
+   <a href="/feedback" class="btn">Give Feedback</a>
+</section>
+
+<section class="features">
+
+    <div class="card">
+        <h3>📚 Courses</h3>
+        <p>Provide feedback about your courses and learning experience.</p>
+    </div>
+
+    <div class="card">
+        <h3>👨‍🏫 Faculty</h3>
+        <p>Rate teachers and help improve teaching quality.</p>
+    </div>
+
+    <div class="card">
+        <h3>📊 Reports</h3>
+        <p>Feedback can be used to generate reports for improvement.</p>
+    </div>
+
+</section>
+
+<footer>
+    &copy; 2026 Student Feedback System | All Rights Reserved
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us - Student Feedback System</title>
+
+    <style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.60)),
+    url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=1920&q=80");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    color:white;
+}
+
+/* Header */
+
+h1{
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:40px;
+    margin:0;
+}
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    padding:15px;
+    background:rgba(255,255,255,.10);
+    backdrop-filter:blur(10px);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    padding:12px 24px;
+    border-radius:8px;
+    transition:.3s;
+    font-weight:bold;
+}
+
+nav a:hover{
+
+    background:#007bff;
+}
+
+nav a.active{
+    background:#007bff;
+    color:white;
+    border-radius:8px;
+}
+/* Main Content */
+
+.hero{
+     transition:0.3s;
+    width:90%;
+    max-width:950px;
+    margin:50px auto;
+    padding:40px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+.hero h2{
+    text-align:center;
+    color:white;
+    margin-bottom:15px;
+    font-size:30px;
+}
+
+.hero:hover{
+    transform:translateY(-5px)
+}
+.hero p{
+    color:#f2f2f2;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.hero ul{
+    margin-left:25px;
+    margin-bottom:20px;
+}
+
+.hero li{
+    margin-bottom:10px;
+    color:#f2f2f2;
+}
+
+hr{
+    border:1px solid rgba(255,255,255,.25);
+    margin:25px 0;
+}
+
+/* Footer */
+
+footer{
+    margin-top:40px;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+nav{
+    flex-wrap:wrap;
+}
+
+h1{
+    font-size:30px;
+}
+
+.hero{
+    width:95%;
+    padding:25px;
+}
+
+.hero h2{
+    font-size:24px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+    <h1>Student Feedback System</h1>
+
+   
+    <nav>
+    <a href="/home">Home</a>
+    <a href="/feedback" class="active">Feedback</a>
+    <a href="/report">Report</a>
+    
+    <a href="/about">About</a>
+    <a href="/ai">AI Assistant</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<div class="hero">
+    <h2>About Us</h2>
+
+    <p>
+        The Student Feedback System is an online platform that allows students
+        to provide feedback about teachers, courses, and college facilities.
+        The system helps improve the quality of education by collecting
+        valuable suggestions from students.
+    </p>
+
+    <h2>Objectives</h2>
+    <ul>
+        <li>Collect student feedback easily.</li>
+        <li>Improve teaching and learning quality.</li>
+        <li>Maintain feedback records securely.</li>
+        <li>Generate feedback reports.</li>
+        <li>Provide a user-friendly interface.</li>
+    </ul>
+
+    <h2>Features</h2>
+    <ul>
+        <li>Student Login</li>
+        <li>Online Feedback Form</li>
+        <li>Teacher Rating System</li>
+        <li>Feedback Report Generation</li>
+        <li>Easy Navigation</li>
+        <li>Secure Data Storage</li>
+    </ul>
+
+    <h2>Technology Used</h2>
+    <ul>
+        <li>HTML - Web Page Structure</li>
+        <li>CSS - Page Styling</li>
+        <li>JavaScript - Form Validation</li>
+        <li>Python (Flask) - Backend Development</li>
+        <li>MySQL - Database Management</li>
+    </ul>
+
+    <h2>Vision</h2>
+    <p>
+        To create a reliable and efficient feedback system that enhances
+        the quality of education through continuous student participation.
+    </p>
+
+    <h2>Mission</h2>
+    <p>
+        To provide a simple, secure, and user-friendly platform where students
+        can share honest feedback to support academic improvement.
+    </p>
+
+</div>    
+    <footer>
+        &copy; 2026 Student Feedback System. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

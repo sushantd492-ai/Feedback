@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Edit Feedback</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+background:url("https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+body::before{
+
+content:"";
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+
+}
+
+.container{
+
+position:relative;
+width:700px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(15px);
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+color:white;
+
+}
+
+h2{
+
+text-align:center;
+
+margin-bottom:25px;
+
+font-size:34px;
+
+}
+
+.row{
+
+display:flex;
+
+gap:15px;
+
+margin-bottom:15px;
+
+}
+
+.col{
+
+flex:1;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:6px;
+
+font-weight:bold;
+
+}
+
+input,
+textarea{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+outline:none;
+
+border-radius:10px;
+
+background:rgba(255,255,255,.2);
+
+color:white;
+
+font-size:16px;
+
+}
+
+textarea{
+
+resize:none;
+
+height:120px;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+color:#eee;
+
+}
+
+.button{
+
+margin-top:20px;
+
+display:flex;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+button{
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:30px;
+
+font-size:18px;
+
+cursor:pointer;
+
+background:linear-gradient(45deg,#007BFF,#00c6ff);
+
+color:white;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 20px rgba(0,0,0,.3);
+
+}
+
+a{
+
+padding:14px 35px;
+
+background:#dc3545;
+
+text-decoration:none;
+
+border-radius:30px;
+
+color:white;
+
+}
+
+a:hover{
+
+background:#b52b38;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Edit Feedback</h2>
+
+<form action="/update/{{ feedback['id'] }}" method="POST">
+
+<div class="row">
+
+<div class="col">
+
+<label>Name</label>
+
+<input type="text"
+name="name"
+value="{{ feedback['name'] }}"
+required>
+
+</div>
+
+<div class="col">
+
+<label>Roll No</label>
+
+<input type="text"
+name="rollno"
+value="{{ feedback['rollno'] }}"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+
+<label>Department</label>
+
+<input type="text"
+name="department"
+value="{{ feedback['department'] }}"
+required>
+
+</div>
+
+<div class="col">
+
+<label>Semester</label>
+
+<input type="text"
+name="semester"
+value="{{ feedback['semester'] }}"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+
+<label>Teacher</label>
+
+<input type="text"
+name="teacher"
+value="{{ feedback['teacher'] }}"
+required>
+
+</div>
+
+<div class="col">
+
+<label>Subject</label>
+
+<input type="text"
+name="subject"
+value="{{ feedback['subject'] }}"
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col">
+
+<label>Rating</label>
+
+<select name="rating" style="width:100%;padding:12px;border:none;border-radius:10px;background:rgba(255,255,255,.2);color:white;">
+
+<option {% if feedback['rating']=="Excellent" %}selected{% endif %}>Excellent</option>
+
+<option {% if feedback['rating']=="Good" %}selected{% endif %}>Good</option>
+
+<option {% if feedback['rating']=="Average" %}selected{% endif %}>Average</option>
+
+<option {% if feedback['rating']=="Poor" %}selected{% endif %}>Poor</option>
+
+</select>
+
+</div>
+
+</div>
+
+<label>Comments</label>
+
+<textarea
+name="comments"
+required>{{ feedback['comments'] }}</textarea>
+
+<div class="button">
+
+<button type="submit">
+
+Update Feedback
+
+</button>
+
+<a href="/dashboard">
+
+Cancel
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+
+</html>

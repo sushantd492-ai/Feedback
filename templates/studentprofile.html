@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile | Student Feedback System</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+/* ================= BODY ================= */
+
+body{
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(5,10,25,.88),
+        rgba(0,80,150,.55)
+    ),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px 15px;
+
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND GLOW ================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    background:#00c6ff;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    opacity:.25;
+
+    top:-120px;
+    left:-100px;
+
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    background:#7c3aed;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    opacity:.25;
+
+    bottom:-150px;
+    right:-100px;
+
+    z-index:-1;
+}
+/* ================= MAIN CARD ================= */
+
+.container{
+
+    width:520px;
+
+    max-width:100%;
+
+    padding:35px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:28px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    animation:cardAppear .8s ease;
+
+}
+
+
+/* ================= ANIMATION ================= */
+
+@keyframes cardAppear{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+
+/* ================= HEADER ================= */
+
+.profile-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.profile-header h1{
+
+    font-size:32px;
+
+    margin-bottom:7px;
+
+    letter-spacing:.5px;
+
+}
+
+.profile-header p{
+
+    color:#cbd5e1;
+
+    font-size:14px;
+
+}
+
+
+/* ================= PROFILE IMAGE ================= */
+
+.profile-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:28px;
+
+}
+
+.profile-ring{
+
+    width:170px;
+    height:170px;
+
+    padding:6px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #00c6ff,
+        #0072ff,
+        #8b5cf6
+    );
+
+    box-shadow:
+        0 0 25px rgba(0,198,255,.5),
+        0 15px 35px rgba(0,0,0,.4);
+
+    animation:floatProfile 4s ease-in-out infinite;
+
+}
+
+@keyframes floatProfile{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+.profile-pic{
+
+    width:100%;
+    height:100%;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    display:block;
+
+    background:white;
+
+    border:5px solid rgba(255,255,255,.9);
+
+}
+
+
+/* ================= USER BADGE ================= */
+
+.student-badge{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:-8px;
+
+    margin-bottom:28px;
+
+}
+
+.student-badge span{
+
+    padding:7px 18px;
+
+    border-radius:30px;
+
+    background:rgba(0,198,255,.15);
+
+    border:1px solid rgba(0,198,255,.4);
+
+    color:#8eeaff;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    box-shadow:0 0 15px rgba(0,198,255,.12);
+
+}
+
+
+/* ================= INFORMATION ================= */
+
+.info-title{
+
+    font-size:18px;
+
+    margin-bottom:15px;
+
+    color:#fff;
+
+}
+
+
+.info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px;
+
+    margin-bottom:13px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    transition:.3s;
+
+}
+
+
+.info:hover{
+
+    transform:translateX(5px);
+
+    background:rgba(255,255,255,.14);
+
+    border-color:rgba(0,198,255,.4);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+
+}
+
+
+.info-icon{
+
+    width:42px;
+    height:42px;
+
+    min-width:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #007bff,
+        #00c6ff
+    );
+
+    font-size:20px;
+
+    box-shadow:0 5px 15px rgba(0,123,255,.3);
+
+}
+
+
+.info-content{
+
+    overflow:hidden;
+
+}
+
+
+.info-label{
+
+    display:block;
+
+    color:#aebdcc;
+
+    font-size:12px;
+
+    margin-bottom:3px;
+
+}
+
+
+.info-value{
+
+    display:block;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+
+/* ================= EDIT BUTTON ================= */
+
+.edit-btn{
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    width:100%;
+
+    margin:25px 0;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    background:linear-gradient(
+        135deg,
+        #007bff,
+        #00c6ff
+    );
+
+    box-shadow:
+        0 8px 20px rgba(0,123,255,.25);
+
+    transition:.3s;
+
+}
+
+
+.edit-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(0,198,255,.35);
+
+}
+
+
+/* ================= DIVIDER ================= */
+
+.divider{
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+
+    margin:28px 0;
+
+}
+
+
+/* ================= PASSWORD SECTION ================= */
+
+.password-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.password-icon{
+
+    width:45px;
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    font-size:21px;
+
+    box-shadow:0 7px 20px rgba(124,58,237,.3);
+
+}
+
+
+.password-header h2{
+
+    font-size:20px;
+
+}
+
+
+.password-header p{
+
+    font-size:12px;
+
+    color:#aebdcc;
+
+    margin-top:2px;
+
+}
+
+
+/* ================= INPUT ================= */
+
+.input-group{
+
+    margin-bottom:15px;
+
+}
+
+
+.input-group input{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.09);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+.input-group input::placeholder{
+
+    color:#aebdcc;
+
+}
+
+
+.input-group input:focus{
+
+    border-color:#00c6ff;
+
+    background:rgba(255,255,255,.13);
+
+    box-shadow:
+        0 0 0 3px rgba(0,198,255,.12);
+
+}
+
+
+/* ================= PASSWORD BUTTON ================= */
+
+.password-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.password-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(124,58,237,.35);
+
+}
+
+
+/* ================= BACK HOME ================= */
+
+.home-btn{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:18px;
+
+    color:#aeeaff;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+
+.home-btn:hover{
+
+    color:white;
+
+    text-decoration:underline;
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+    body{
+
+        padding:20px 12px;
+
+        align-items:flex-start;
+
+    }
+
+    .container{
+
+        padding:25px 18px;
+
+        border-radius:22px;
+
+    }
+
+    .profile-header h1{
+
+        font-size:27px;
+
+    }
+
+    .profile-ring{
+
+        width:145px;
+        height:145px;
+
+    }
+
+    .info-value{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* ================= SUCCESS POPUP ================= */
+
+.success-overlay{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(8px);
+
+    z-index:9999;
+
+    animation:fadeIn .3s ease;
+}
+
+.success-popup{
+    width:400px;
+    max-width:90%;
+
+    padding:35px 30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.14);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    color:white;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.5),
+        inset 0 1px 0 rgba(255,255,255,.2);
+
+    animation:popupAppear .4s ease;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    color:white;
+
+    font-size:42px;
+    font-weight:bold;
+
+    box-shadow:
+        0 0 25px rgba(34,197,94,.45);
+}
+
+.success-popup h2{
+    font-size:26px;
+    margin-bottom:10px;
+}
+
+.success-popup p{
+    color:#dbeafe;
+    font-size:15px;
+    margin-bottom:25px;
+}
+
+.success-popup button{
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #007bff,
+        #00c6ff
+    );
+
+    color:white;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.success-popup button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0,198,255,.35);
+}
+
+
+/* Animation */
+
+@keyframes popupAppear{
+
+    from{
+        opacity:0;
+        transform:scale(.8) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="profile-header">
+
+        <h1>👤 My Profile</h1>
+
+        <p>Manage your student account</p>
+
+    </div>
+
+
+    <!-- PROFILE IMAGE -->
+
+    <div class="profile-section">
+
+        <div class="profile-ring">
+
+            <img
+                src="{{ url_for('static', filename='images/default.png') }}"
+                class="profile-pic"
+                alt="Profile">
+
+        </div>
+
+    </div>
+
+
+    <!-- BADGE -->
+
+    <div class="student-badge">
+
+        <span>🎓 Student Account</span>
+
+    </div>
+
+
+    <!-- PERSONAL INFORMATION -->
+
+    <div class="info-title">
+
+        Personal Information
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-icon">
+
+            👤
+
+        </div>
+
+        <div class="info-content">
+
+            <span class="info-label">FULL NAME</span>
+
+            <span class="info-value">
+
+                {{ user["fullname"] }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-icon">
+
+            ✉️
+
+        </div>
+
+        <div class="info-content">
+
+            <span class="info-label">EMAIL ADDRESS</span>
+
+            <span class="info-value">
+
+                {{ user["email"] }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-icon">
+
+            📱
+
+        </div>
+
+        <div class="info-content">
+
+            <span class="info-label">MOBILE NUMBER</span>
+
+            <span class="info-value">
+
+                {{ user["mobile"] }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- EDIT PROFILE -->
+
+    
+
+
+    <div class="divider"></div>
+
+
+    <!-- CHANGE PASSWORD -->
+
+    <div class="password-header">
+
+        <div class="password-icon">
+
+            🔐
+
+        </div>
+
+        <div>
+
+            <h2>Change Password</h2>
+
+            <p>Keep your account secure</p>
+
+        </div>
+
+    </div>
+
+
+    <form action="/change_password" method="POST">
+
+
+        <div class="input-group">
+
+            <input
+                type="password"
+                name="old_password"
+                placeholder="🔒  Enter old password"
+                required>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <input
+                type="password"
+                name="new_password"
+                placeholder="🔑  Enter new password"
+                required>
+
+        </div>
+
+
+        <button
+            type="submit"
+            class="password-btn">
+
+            🔄 Update Password
+
+        </button>
+
+    </form>
+
+
+    <!-- BACK HOME -->
+
+    <a href="/home" class="home-btn">
+
+        ← Back to Home
+
+    </a>
+
+
+</div>
+
+<!-- Success Popup -->
+{% if password_changed %}
+
+<div id="successPopup" class="success-overlay">
+
+    <div class="success-popup">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Password Changed!</h2>
+
+        <p>
+            Your password has been changed successfully.
+        </p>
+
+        <button type="button" onclick="closeSuccessPopup()">
+            Continue
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+function closeSuccessPopup() {
+    document.getElementById("successPopup").style.display = "none";
+}
+</script>
+
+{% endif %}
+
+<script>
+function closeSuccessPopup() {
+    document.getElementById("successPopup").style.display = "none";
+}
+</script>
+
+</body>
+
+</html>
