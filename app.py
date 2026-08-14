@@ -5,26 +5,13 @@ import random
 import time
 import os
 from werkzeug.utils import secure_filename
-
+from db import get_db
 app = Flask(__name__)
 app.secret_key = "studentfeedback"
 
 
 # ---------- DATABASE ----------
 
-def get_db():
-           
-      print("HOST:", os.getenv("MYSQLHOST"))
-      print("PORT:", os.getenv("MYSQLPORT"))
-      print("USER:", os.getenv("MYSQLUSER"))
-      print("DB:", os.getenv("MYSQLDATABASE"))
-      return mysql.connector.connect(
-        host=os.getenv("MYSQLHOST"),
-        user=os.getenv("MYSQLUSER"),
-        password=os.getenv("MYSQLPASSWORD"),
-        database=os.getenv("MYSQL_DATABASE"),   # <-- changed
-       port = int(os.getenv("MYSQLPORT", 3306))
-    )
 
 # def init_db():
 #     conn = get_db()
