@@ -14,13 +14,13 @@ app.secret_key = "studentfeedback"
 
 def get_db():
    
-    conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="",  
-        database="student feedback system"
+     return mysql.connector.connect(
+        host=os.getenv("MYSQLHOST"),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),   # <-- changed
+       port = int(os.getenv("MYSQLPORT", 3306))
     )
-    return conn
 
 def init_db():
     conn = get_db()
